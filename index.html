@@ -97,6 +97,10 @@
       white-space: nowrap;
     }
     .btn:hover { transform: translateY(-2px); }
+    .btn:focus-visible {
+      outline: 4px solid rgba(244, 161, 31, .5);
+      outline-offset: 3px;
+    }
     .btn-primary {
       background: var(--orange);
       color: var(--white);
@@ -150,6 +154,19 @@
       margin: 0 0 28px;
     }
     .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin-bottom: 26px; }
+    .trust-strip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: -8px 0 22px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 250, 240, .78);
+      border: 1px solid rgba(61, 42, 20, .12);
+      color: var(--brown-soft);
+      font-weight: 800;
+      box-shadow: 0 8px 22px rgba(61, 42, 20, .08);
+    }
     .hero-points {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -209,8 +226,24 @@
       height: 100%;
       min-height: inherit;
       object-fit: cover;
-      object-position: 44% center;
+      object-position: 38% center;
     }
+    .camp-illustration picture {
+      display: block;
+      height: 100%;
+      min-height: inherit;
+    }
+    .camp-illustration.has-photo::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(180deg, rgba(61, 42, 20, 0) 42%, rgba(61, 42, 20, .38) 100%),
+        radial-gradient(circle at 76% 76%, rgba(61, 42, 20, .5), transparent 36%);
+      pointer-events: none;
+    }
+    .camp-illustration.has-photo::after { content: none; }
     .house {
       position: absolute;
       left: 38%; bottom: 26%;
@@ -253,6 +286,12 @@
       font-weight: 900;
       max-width: 210px;
     }
+    .badge-price strong {
+      display: block;
+      font-size: 22px;
+      line-height: 1.05;
+      margin: 4px 0;
+    }
     .badge-price small { display: block; opacity: .9; font-size: 12px; }
 
     section { padding: 72px 0; }
@@ -286,6 +325,27 @@
     }
     .card h3 { font-size: 23px; margin-bottom: 10px; }
     .card p { margin: 0; color: var(--brown-soft); }
+    .card.needs-validation,
+    .testimonial.is-example {
+      border: 1px dashed rgba(216, 92, 23, .48);
+      background:
+        linear-gradient(180deg, rgba(244, 161, 31, .1), rgba(255, 250, 240, .92));
+    }
+    .content-status {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      margin-bottom: 12px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(216, 92, 23, .12);
+      color: var(--orange);
+      font-size: 12px;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
 
     .split {
       display: grid;
@@ -432,6 +492,10 @@
       font-size: 18px;
     }
     details p { color: var(--brown-soft); margin-bottom: 0; }
+    details.needs-validation {
+      border: 1px dashed rgba(216, 92, 23, .42);
+      background: rgba(255, 250, 240, .82);
+    }
 
     .suggestion {
       background: rgba(244, 161, 31, .16);
@@ -441,6 +505,24 @@
       color: var(--brown-soft);
     }
     .suggestion strong { color: var(--orange); }
+    .suggestion .content-status {
+      margin: 0 0 10px;
+      background: rgba(255, 250, 240, .8);
+    }
+    .panel .suggestion {
+      margin-top: 18px;
+      background: rgba(255, 250, 240, .12);
+      border-color: rgba(255, 250, 240, .46);
+      color: rgba(255,255,255,.88);
+    }
+    .panel .suggestion strong,
+    .panel .suggestion .content-status { color: #fff; }
+    .panel .suggestion .content-status { background: rgba(255,255,255,.16); }
+    .section-cta {
+      display: flex;
+      justify-content: center;
+      margin-top: 24px;
+    }
 
     .cta-final {
       text-align: center;
@@ -493,7 +575,10 @@
       .brand-logo { max-height: 58px; }
       .hero { padding-top: 42px; }
       .hero-points, .cards, .timeline, .team, .testimonials, .checklist, .pricing-grid { grid-template-columns: 1fr; }
-      .camp-illustration { min-height: 330px; }
+      .camp-illustration { min-height: 300px; }
+      .hero-visual { padding: 18px; border-radius: 34px; }
+      .trust-strip { border-radius: 18px; align-items: flex-start; }
+      .badge-price { left: 18px; right: 18px; max-width: none; }
       .pricing-wrap, .cta-box { border-radius: 28px; padding: 26px 18px; }
       .btn { width: 100%; }
       .topbar .btn { width: auto; padding-inline: 18px; }
@@ -516,7 +601,7 @@
         <a href="#depoimentos">Depoimentos</a>
         <a href="#faq">FAQ</a>
       </nav>
-      <a class="btn btn-primary" href="https://wa.me/5521981191991?text=Ol%C3%A1%21%20Tenho%20interesse%20na%20temporada%20de%20inverno%20da%20Domingueira%20Camp." target="_blank" rel="noopener">Falar no WhatsApp</a>
+      <a class="btn btn-primary" href="https://wa.me/5521981191991?text=Ol%C3%A1%21%20Quero%20consultar%20disponibilidade%20para%20a%20temporada%20de%20inverno%20da%20Domingueira%20Camp." target="_blank" rel="noopener">Consultar disponibilidade</a>
     </div>
   </header>
 
@@ -528,9 +613,10 @@
           <h1>Férias no sítio com <strong>natureza, cuidado e diversão</strong>.</h1>
           <p class="lead">Uma experiência acolhedora para as crianças viverem dias longe das telas, perto da natureza, com atividades, alimentação planejada, monitores 24h e comunicação diária com as famílias.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="https://wa.me/5521981191991?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20a%20Domingueira%20Camp." target="_blank" rel="noopener">Quero reservar uma vaga</a>
+            <a class="btn btn-primary" href="https://wa.me/5521981191991?text=Ol%C3%A1%21%20Quero%20falar%20sobre%20uma%20vaga%20na%20temporada%20de%20inverno%20da%20Domingueira%20Camp." target="_blank" rel="noopener">Quero falar sobre a vaga</a>
             <a class="btn btn-secondary" href="#incluso">Ver o que está incluso</a>
           </div>
+          <div class="trust-strip">Grupo reduzido, monitores 24h e boletins diários para os pais.</div>
           <div class="hero-points">
             <div class="mini-card">Até 20 crianças<small>grupo menor e mais cuidado</small></div>
             <div class="mini-card">5 por monitor<small>atenção próxima</small></div>
@@ -538,10 +624,13 @@
           </div>
         </div>
 
-        <div class="hero-visual" aria-label="Ilustração de sítio, piscina e natureza">
+        <div class="hero-visual" aria-label="Foto do sítio com piscina, gramado e atividades ao ar livre">
           <div class="camp-illustration has-photo">
-            <img class="camp-photo" src="assets/hero-sitio.jpg" alt="Crianças brincando no gramado do sítio, perto da piscina e de árvores" />
-            <div class="badge-price"><small>Temporada de inverno</small>Vagas limitadas<br><small>Consulte condições pelo WhatsApp</small></div>
+            <picture>
+              <source type="image/webp" srcset="assets/hero-sitio-640.webp 640w, assets/hero-sitio-960.webp 960w, assets/hero-sitio-1280.webp 1280w, assets/hero-sitio-1600.webp 1600w" sizes="(max-width: 640px) 82vw, (max-width: 920px) 88vw, 430px" />
+              <img class="camp-photo" src="assets/hero-sitio-1280.jpg" width="1280" height="960" alt="Crianças brincando no gramado do sítio, perto da piscina e de árvores" fetchpriority="high" />
+            </picture>
+            <div class="badge-price"><small>Temporada de inverno</small><strong>20 a 24 de julho</strong><small>Vagas limitadas. Consulte condições pelo WhatsApp.</small></div>
           </div>
         </div>
       </div>
@@ -569,7 +658,7 @@
         <aside class="panel">
           <h2>O que a Domingueira Camp oferece</h2>
           <p>Os principais itens já definidos foram transformados em uma lista clara para facilitar a decisão dos responsáveis.</p>
-          <p><strong>Sugestão:</strong> depois, este bloco pode receber fotos reais do transporte, quartos, refeições, piscina e áreas de atividade.</p>
+          <div class="suggestion"><span class="content-status">Sugestão de conteúdo</span><strong>Fotos para completar:</strong> transporte, quartos, refeições, piscina e áreas de atividade.</div>
         </aside>
         <div class="checklist">
           <div class="check"><span>✓</span>Transporte ida e volta<small>A partir do Grajaú, conforme ponto de encontro combinado.</small></div>
@@ -596,7 +685,7 @@
           <div class="time-card"><strong>Noite</strong><p>Jantar, brincadeiras noturnas, convivência e preparação para dormir.</p></div>
           <div class="time-card"><strong>Todos os dias</strong><p>Boletim geral, fotos para as famílias e acompanhamento dos monitores.</p></div>
         </div>
-        <div class="suggestion" style="margin-top:18px"><strong>Pendente para publicar:</strong> confirmar horários, atividades específicas, regras de celular, itens para levar e rotina de sono.</div>
+        <div class="suggestion" style="margin-top:18px"><span class="content-status">Pendente para publicar</span><strong>Confirmar antes da versão final:</strong> horários, atividades específicas, regras de celular, itens para levar e rotina de sono.</div>
       </div>
     </section>
 
@@ -609,10 +698,13 @@
         <div class="cards">
           <article class="card"><div class="icon">🧑‍🏫</div><h3>Equipe 24h</h3><p>Monitores acompanham as crianças durante toda a temporada, com baixa proporção de crianças por monitor.</p></article>
           <article class="card"><div class="icon">📝</div><h3>Ficha de saúde</h3><p>Os responsáveis preenchem formulário com informações de saúde, autorizações e orientações importantes.</p></article>
-          <article class="card"><div class="icon">💊</div><h3>Medicamentos</h3><p>Sugestão de conteúdo: explicar como a equipe recebe, armazena e administra medicamentos autorizados.</p></article>
-          <article class="card"><div class="icon">🚑</div><h3>Emergências</h3><p>Sugestão de conteúdo: informar protocolo de primeiros socorros, hospital de referência e contato imediato com os pais.</p></article>
-          <article class="card"><div class="icon">🏡</div><h3>Estrutura do sítio</h3><p>Sugestão de conteúdo: detalhar quartos, banheiros, área coberta, piscina, refeitório e áreas de atividades.</p></article>
+          <article class="card needs-validation"><span class="content-status">Sugestão de conteúdo</span><div class="icon">💊</div><h3>Medicamentos</h3><p>Explicar como a equipe recebe, armazena e administra medicamentos autorizados.</p></article>
+          <article class="card needs-validation"><span class="content-status">Pendente para validar</span><div class="icon">🚑</div><h3>Emergências</h3><p>Informar protocolo de primeiros socorros, hospital de referência e contato imediato com os pais.</p></article>
+          <article class="card needs-validation"><span class="content-status">Sugestão de conteúdo</span><div class="icon">🏡</div><h3>Estrutura do sítio</h3><p>Detalhar quartos, banheiros, área coberta, piscina, refeitório e áreas de atividades.</p></article>
           <article class="card"><div class="icon">📲</div><h3>Contato com a direção</h3><p>As famílias contam com comunicação com a direção da colônia e boletins durante a experiência.</p></article>
+        </div>
+        <div class="section-cta">
+          <a class="btn btn-primary" href="https://wa.me/5521981191991?text=Ol%C3%A1%21%20Gostaria%20de%20entender%20melhor%20a%20seguran%C3%A7a%20e%20os%20cuidados%20da%20Domingueira%20Camp." target="_blank" rel="noopener">Tirar dúvidas sobre segurança</a>
         </div>
       </div>
     </section>
@@ -624,9 +716,9 @@
           <p>Bloco para humanizar a equipe e transmitir confiança. As funções já estão mapeadas; as mini bios podem ser preenchidas depois.</p>
         </div>
         <div class="team">
-          <article class="person"><div class="avatar">B</div><h3>Beatriz</h3><p><strong>Operação</strong></p><p>Sugestão: incluir breve apresentação, experiência com crianças e papel na rotina da colônia.</p></article>
-          <article class="person"><div class="avatar">A</div><h3>André</h3><p><strong>Estrutura</strong></p><p>Sugestão: explicar responsabilidade pelas instalações, logística e apoio operacional.</p></article>
-          <article class="person"><div class="avatar">M</div><h3>Marisa</h3><p><strong>Cuidados especiais</strong></p><p>Sugestão: destacar acompanhamento de riscos, medicamentos, refeições, bebidas e contato com os pais.</p></article>
+          <article class="person"><span class="content-status">Texto a substituir</span><div class="avatar">B</div><h3>Beatriz</h3><p><strong>Operação</strong></p><p>Incluir breve apresentação, experiência com crianças e papel na rotina da colônia.</p></article>
+          <article class="person"><span class="content-status">Texto a substituir</span><div class="avatar">A</div><h3>André</h3><p><strong>Estrutura</strong></p><p>Explicar responsabilidade pelas instalações, logística e apoio operacional.</p></article>
+          <article class="person"><span class="content-status">Texto a substituir</span><div class="avatar">M</div><h3>Marisa</h3><p><strong>Cuidados especiais</strong></p><p>Destacar acompanhamento de riscos, medicamentos, refeições, bebidas e contato com os pais.</p></article>
         </div>
       </div>
     </section>
@@ -642,7 +734,10 @@
             <article class="price-card featured"><h3>Novos campistas</h3><div class="price">R$ 1.200</div><p>Valor informado para novas crianças na temporada.</p></article>
             <article class="price-card"><h3>Condições especiais</h3><div class="price">Sob consulta</div><p>Converse com a equipe pelo WhatsApp para verificar condições, disponibilidade de vagas e orientações para inscrição.</p></article>
           </div>
-          <div class="suggestion" style="margin-top:18px;background:rgba(255,250,240,.12);color:rgba(255,255,255,.86);border-color:rgba(255,255,255,.35)"><strong style="color:#fff">Pendente para publicar:</strong> confirmar formas de pagamento, prazo de reserva, política de cancelamento e se haverá sinal para garantir a vaga.</div>
+          <div class="section-cta">
+            <a class="btn btn-primary" href="https://wa.me/5521981191991?text=Ol%C3%A1%21%20Quero%20consultar%20disponibilidade%2C%20valores%20e%20condi%C3%A7%C3%B5es%20da%20Domingueira%20Camp." target="_blank" rel="noopener">Consultar disponibilidade e valores</a>
+          </div>
+          <div class="suggestion" style="margin-top:18px;background:rgba(255,250,240,.12);color:rgba(255,255,255,.86);border-color:rgba(255,255,255,.35)"><span class="content-status" style="background:rgba(255,255,255,.16);color:#fff">Pendente para publicar</span><strong style="color:#fff">Confirmar para a versão final:</strong> formas de pagamento, prazo de reserva, política de cancelamento e se haverá sinal para garantir a vaga.</div>
         </div>
       </div>
     </section>
@@ -654,11 +749,11 @@
           <p>Como ainda não há depoimentos reais incluídos nos materiais, este bloco já fica preparado com sugestões de texto para substituir por falas autorizadas das famílias.</p>
         </div>
         <div class="testimonials">
-          <article class="testimonial"><p>Minha filha voltou falando das brincadeiras, dos amigos e da vontade de participar de novo. Foi muito bom acompanhar os boletins durante a semana.</p><strong>Responsável por campista</strong><small>Depoimento sugerido</small></article>
-          <article class="testimonial"><p>O que mais nos tranquilizou foi perceber o cuidado da equipe, a organização da rotina e o contato diário com as famílias.</p><strong>Família participante</strong><small>Depoimento sugerido</small></article>
-          <article class="testimonial"><p>Uma experiência diferente das férias tradicionais: mais natureza, menos tela e muita convivência. As crianças criaram memórias especiais.</p><strong>Pais de campista</strong><small>Depoimento sugerido</small></article>
+          <article class="testimonial is-example"><span class="content-status">Exemplo de formato</span><p>Minha filha voltou falando das brincadeiras, dos amigos e da vontade de participar de novo. Foi muito bom acompanhar os boletins durante a semana.</p><strong>Responsável por campista</strong><small>Depoimento sugerido</small></article>
+          <article class="testimonial is-example"><span class="content-status">Exemplo de formato</span><p>O que mais nos tranquilizou foi perceber o cuidado da equipe, a organização da rotina e o contato diário com as famílias.</p><strong>Família participante</strong><small>Depoimento sugerido</small></article>
+          <article class="testimonial is-example"><span class="content-status">Exemplo de formato</span><p>Uma experiência diferente das férias tradicionais: mais natureza, menos tela e muita convivência. As crianças criaram memórias especiais.</p><strong>Pais de campista</strong><small>Depoimento sugerido</small></article>
         </div>
-        <div class="suggestion" style="margin-top:18px"><strong>Pendente para publicar:</strong> substituir estes textos por depoimentos reais, com autorização dos responsáveis, nome ou iniciais e, se possível, foto da família ou da criança sem identificação sensível.</div>
+        <div class="suggestion" style="margin-top:18px"><span class="content-status">Pendente para publicar</span><strong>Coletar antes da versão final:</strong> depoimentos reais autorizados, com nome ou iniciais e, se possível, foto da família ou da criança sem identificação sensível.</div>
       </div>
     </section>
 
@@ -670,12 +765,15 @@
         </div>
         <div class="faq">
           <details open><summary>Qual é a data da próxima temporada?</summary><p>A temporada de inverno está prevista para acontecer entre os dias 20 e 24 de julho.</p></details>
-          <details><summary>De onde sai o transporte?</summary><p>O material menciona transporte de ida e volta a partir do Grajaú. Sugestão: informar endereço exato do ponto de encontro e horário de embarque/desembarque.</p></details>
-          <details><summary>Qual é a faixa etária?</summary><p>Essa informação ainda precisa ser confirmada antes da publicação. Sugestão: definir idade mínima e máxima de forma bem visível.</p></details>
-          <details><summary>A criança pode levar celular?</summary><p>Como a proposta inclui detox digital, a recomendação é criar uma regra clara sobre celular e comunicação com a família.</p></details>
-          <details><summary>Como funcionam alimentação especial e alergias?</summary><p>Sugestão: coletar essas informações na ficha de saúde e explicar o processo de avaliação pela equipe antes da confirmação.</p></details>
+          <details class="needs-validation"><summary>De onde sai o transporte?</summary><span class="content-status">Pendente para validar</span><p>O material menciona transporte de ida e volta a partir do Grajaú. Informar endereço exato do ponto de encontro e horário de embarque/desembarque.</p></details>
+          <details class="needs-validation"><summary>Qual é a faixa etária?</summary><span class="content-status">Pendente para validar</span><p>Essa informação ainda precisa ser confirmada antes da publicação. Definir idade mínima e máxima de forma bem visível.</p></details>
+          <details class="needs-validation"><summary>A criança pode levar celular?</summary><span class="content-status">Sugestão de regra</span><p>Como a proposta inclui detox digital, a recomendação é criar uma regra clara sobre celular e comunicação com a família.</p></details>
+          <details class="needs-validation"><summary>Como funcionam alimentação especial e alergias?</summary><span class="content-status">Sugestão de processo</span><p>Coletar essas informações na ficha de saúde e explicar o processo de avaliação pela equipe antes da confirmação.</p></details>
           <details><summary>Como os pais acompanham a experiência?</summary><p>Os pais recebem boletins gerais, fotos do dia e contato com a direção da colônia.</p></details>
           <details><summary>O que os responsáveis precisam providenciar?</summary><p>Ficha de inscrição com informações de saúde, autorização de viagem, autorização de uso de imagem, materiais solicitados, pagamento da inscrição e chegada no ponto de encontro no horário combinado.</p></details>
+        </div>
+        <div class="section-cta">
+          <a class="btn btn-primary" href="https://wa.me/5521981191991?text=Ol%C3%A1%21%20Li%20as%20perguntas%20frequentes%20e%20ainda%20tenho%20d%C3%BAvidas%20sobre%20a%20Domingueira%20Camp." target="_blank" rel="noopener">Ainda tenho dúvidas</a>
         </div>
       </div>
     </section>
@@ -686,7 +784,7 @@
           <div class="eyebrow">Vagas limitadas</div>
           <h2>Quer receber as informações da próxima turma?</h2>
           <p class="lead" style="margin-left:auto;margin-right:auto">Fale com a equipe da Domingueira Camp pelo WhatsApp e tire suas dúvidas sobre datas, valores, logística e inscrição.</p>
-          <a class="btn btn-primary" href="https://wa.me/5521981191991?text=Ol%C3%A1%21%20Tenho%20interesse%20na%20Domingueira%20Camp%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener">Chamar no WhatsApp</a>
+          <a class="btn btn-primary" href="https://wa.me/5521981191991?text=Ol%C3%A1%21%20Quero%20receber%20as%20informa%C3%A7%C3%B5es%20da%20pr%C3%B3xima%20turma%20da%20Domingueira%20Camp." target="_blank" rel="noopener">Receber informações no WhatsApp</a>
           <div class="contact-line"><span>📧 contato@domingueiracamp.com.br</span><span>📱 +55 21 98119-1991</span></div>
         </div>
       </div>
