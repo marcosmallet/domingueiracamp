@@ -403,6 +403,45 @@
       padding: 38px;
       box-shadow: var(--shadow);
     }
+    .capacity-note {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      align-items: center;
+      gap: 14px;
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 24px;
+      background: rgba(255, 250, 240, .1);
+      border: 1px solid rgba(255, 250, 240, .22);
+    }
+    .capacity-note p {
+      margin: 0;
+      color: rgba(255,255,255,.88);
+      font-weight: 800;
+    }
+    .capacity-stat {
+      min-width: 118px;
+      padding: 12px 14px;
+      border-radius: 18px;
+      background: rgba(255, 250, 240, .92);
+      color: var(--brown);
+      text-align: center;
+      font-weight: 900;
+    }
+    .capacity-stat strong {
+      display: block;
+      color: var(--orange);
+      font-size: 30px;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+    .capacity-stat small {
+      display: block;
+      margin-top: 4px;
+      color: var(--brown-soft);
+      font-size: 12px;
+      line-height: 1.15;
+    }
     .pricing-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -579,6 +618,8 @@
       .hero-visual { padding: 18px; border-radius: 34px; }
       .trust-strip { border-radius: 18px; align-items: flex-start; }
       .badge-price { left: 18px; right: 18px; max-width: none; }
+      .capacity-note { grid-template-columns: 1fr; }
+      .capacity-stat { min-width: 0; }
       .pricing-wrap, .cta-box { border-radius: 28px; padding: 26px 18px; }
       .btn { width: 100%; }
       .topbar .btn { width: auto; padding-inline: 18px; }
@@ -728,7 +769,11 @@
         <div class="pricing-wrap">
           <div class="section-head" style="margin-bottom:0">
             <h2>Investimento da temporada de inverno</h2>
-            <p>Grupo limitado para manter a qualidade da experiência: até 20 crianças, com mínimo de 15 participantes.</p>
+          </div>
+          <div class="capacity-note" aria-label="Capacidade da turma">
+            <p>Grupo limitado para manter a qualidade da experiência e o acompanhamento próximo.</p>
+            <div class="capacity-stat"><strong>20</strong><small>crianças no máximo</small></div>
+            <div class="capacity-stat"><strong>15</strong><small>participantes mínimos</small></div>
           </div>
           <div class="pricing-grid">
             <article class="price-card featured"><h3>Novos campistas</h3><div class="price">R$ 1.200</div><p>Valor informado para novas crianças na temporada.</p></article>
