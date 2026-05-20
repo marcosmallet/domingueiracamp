@@ -73,6 +73,7 @@
       flex: 0 0 auto;
       width: auto;
     }
+    .cta-label-mobile { display: none; }
     .nav-links {
       display: flex;
       align-items: center;
@@ -609,9 +610,11 @@
 
     @media (max-width: 640px) {
       .container { width: min(100% - 22px, 1120px); }
-      .nav { gap: 12px; }
-      .brand { flex-basis: clamp(150px, 42vw, 240px); }
-      .brand-logo { max-height: 58px; }
+      .nav { gap: 10px; }
+      .brand { flex: 1 1 auto; }
+      .brand-logo { width: clamp(160px, 46vw, 190px); max-height: 70px; }
+      .cta-label-desktop { display: none; }
+      .cta-label-mobile { display: inline; }
       .hero { padding-top: 42px; }
       .hero-points, .cards, .timeline, .team, .testimonials, .checklist, .pricing-grid { grid-template-columns: 1fr; }
       .camp-illustration { min-height: 300px; }
@@ -622,7 +625,7 @@
       .capacity-stat { min-width: 0; }
       .pricing-wrap, .cta-box { border-radius: 28px; padding: 26px 18px; }
       .btn { width: 100%; }
-      .topbar .btn { width: auto; padding-inline: 18px; }
+      .topbar .btn { width: auto; min-height: 52px; padding-inline: 18px; font-size: 16px; }
       .price { font-size: 38px; }
       section { padding: 52px 0; }
     }
@@ -642,7 +645,7 @@
         <a href="#depoimentos">Depoimentos</a>
         <a href="#faq">FAQ</a>
       </nav>
-      <a class="btn btn-primary" href="https://wa.me/5521981191991?text=Ol%C3%A1%21%20Quero%20consultar%20disponibilidade%20para%20a%20temporada%20de%20inverno%20da%20Domingueira%20Camp." target="_blank" rel="noopener">Consultar disponibilidade</a>
+      <a class="btn btn-primary" href="https://wa.me/5521981191991?text=Ol%C3%A1%21%20Quero%20consultar%20disponibilidade%20para%20a%20temporada%20de%20inverno%20da%20Domingueira%20Camp." target="_blank" rel="noopener"><span class="cta-label-desktop">Consultar disponibilidade</span><span class="cta-label-mobile">WhatsApp</span></a>
     </div>
   </header>
 
